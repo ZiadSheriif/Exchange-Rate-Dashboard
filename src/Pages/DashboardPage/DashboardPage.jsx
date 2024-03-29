@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { LineChart, BarChart } from "@mui/charts-material";
+// import { LineChart, BarChart } from "@mui/charts-material";
+import { LineChart, BarChart } from 'recharts';
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
