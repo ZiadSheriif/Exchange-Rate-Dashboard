@@ -51,6 +51,8 @@ Add additional notes about how to deploy this on a live system.
 * [React](https://reactjs.org/) - The web framework used
 * [Vite](https://vitejs.dev/) - Build tool
 * [ESLint](https://eslint.org/) - Linting tool
+* [Jest](https://jestjs.io/docs/tutorial-react) - Testing framework used
+* [Jsdoc](https://jsdoc.app/about-configuring-jsdoc) - Documentation tool
 
 ## Contributing
 
