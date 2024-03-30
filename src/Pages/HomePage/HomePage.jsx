@@ -1,3 +1,15 @@
+/**
+ * HomePage Page
+ *
+ * This page represents the home page of the application. It includes a welcome message and a link to the dashboard page.
+ *
+ * @page
+ *
+ * @example
+ * return (
+ *   <HomePage />
+ * )
+ */
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";

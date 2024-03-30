@@ -1,3 +1,15 @@
+/**
+ * BarChart Component
+ *
+ * This component fetches the latest exchange rates for EGP, EUR, and GBP against USD and displays them in a bar chart.
+ *
+ * @component
+ * @example
+ * return (
+ *   <BarChart />
+ * )
+ */
+
 import React, { useEffect, useState } from "react";
 
 // Chart imports
@@ -10,18 +22,22 @@ import useFetchFunction from "src/Hooks/useFetchFunction";
 import getLastestExchangeRates from "src/Services/getLatestExchange";
 
 const BarChart = () => {
+  // Fetching exchange rates for EGP, EUR, and GBP
   const [EGP, errorEGP, isLoadingEGP, fetchDataEGP] = useFetchFunction();
   const [EUR, errorEUR, isLoadingEUR, fetchDataEUR] = useFetchFunction();
   const [GBP, errorGBP, isLoadingGBP, fetchDataGBP] = useFetchFunction();
 
+  // State for storing the chart data
   const [data, setData] = useState({ labels: [], datasets: [] });
 
+  // Fetching the exchange rates when the component mounts
   useEffect(() => {
     getLastestExchangeRates(fetchDataEGP, "EGP");
     getLastestExchangeRates(fetchDataEUR, "EUR");
     getLastestExchangeRates(fetchDataGBP, "GBP");
   }, []);
 
+  // Updating the chart data when the exchange rates change
   useEffect(() => {
     if (errorEGP || errorEUR || errorGBP) {
     } else if (
@@ -55,6 +71,7 @@ const BarChart = () => {
     }
   }, [EGP, EUR, GBP]);
 
+  // Chart options
   const options = {
     scales: {
       y: {
@@ -63,6 +80,7 @@ const BarChart = () => {
     },
   };
 
+  // Rendering the chart or a loading message
   return isLoadingEGP ||
     isLoadingEUR ||
     isLoadingGBP ||

@@ -1,3 +1,17 @@
+/**
+ * App Component
+ *
+ * This is the root component of the application. It sets up the routing for the application and renders the Header, HomePage, and DashboardPage components.
+ * It also maintains a state variable "mode" which can be either "view" or "edit". The "mode" state is passed to the Header and DashboardPage components.
+ * The "toggleMode" function is used to switch the "mode" between "view" and "edit".
+ *
+ * @component
+ *
+ * @example
+ * return (
+ *   <App />
+ * )
+ */
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
