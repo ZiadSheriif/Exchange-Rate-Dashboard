@@ -17,6 +17,9 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 import { Bar } from "react-chartjs-2";
 
+// mock data
+import { mockBarChartData } from "src/Data/mockBarChartData";
+
 // useFetch function
 import useFetchFunction from "src/Hooks/useFetchFunction";
 import getLastestExchangeRates from "src/Services/getLatestExchange";
@@ -28,7 +31,7 @@ const BarChart = () => {
   const [GBP, errorGBP, isLoadingGBP, fetchDataGBP] = useFetchFunction();
 
   // State for storing the chart data
-  const [data, setData] = useState({ labels: [], datasets: [] });
+  const [data, setData] = useState(mockBarChartData);
 
   // Fetching the exchange rates when the component mounts
   useEffect(() => {
@@ -52,18 +55,24 @@ const BarChart = () => {
         labels: ["EGP", "EUR", "GBP"],
         datasets: [
           {
-            label: "USD Exchange Rates",
-            data: [EGP?.rates?.EGP, EUR?.rates?.EUR, GBP?.rates?.GBP],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-            ],
+            label: "USD To EGP",
+            data: [EGP?.rates?.EGP, 0, 0],
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "USD To EUR",
+            data: [0, EUR?.rates?.EUR, 0],
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "USD To GBP",
+            data: [0, 0, GBP?.rates?.GBP],
+            backgroundColor: "rgba(255, 206, 86, 0.2)",
+            borderColor: "rgba(255, 206, 86, 1)",
             borderWidth: 1,
           },
         ],
@@ -74,7 +83,15 @@ const BarChart = () => {
   // Chart options
   const options = {
     scales: {
+      x: {
+        grid: {
+          color: "rgba(255, 99, 132, 0.2)",
+        },
+      },
       y: {
+        grid: {
+          color: "rgba(255, 99, 132, 0.2)",
+        },
         beginAtZero: true,
       },
     },

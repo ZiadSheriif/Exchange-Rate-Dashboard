@@ -21,12 +21,15 @@ import { Line } from "react-chartjs-2";
 import useFetchFunction from "src/Hooks/useFetchFunction";
 import geLast30DaysUSDEUR from "src/Services/getExchangeRates";
 
+// mock data
+import { mockLineChartData } from "src/Data/mockLineChartData";
+
 const LineChart = () => {
   // Fetching the exchange rates
   const [response, error, isLoading, fetchData] = useFetchFunction();
 
   // State for storing the chart data
-  const [data, setData] = useState({ labels: [], datasets: [] });
+  const [data, setData] = useState(mockLineChartData);
 
   // Fetching the exchange rates when the component mounts
   useEffect(() => {
@@ -37,7 +40,7 @@ const LineChart = () => {
   useEffect(() => {
     if (error) {
       console.log(error);
-    } else if (response!==undefined && response.rates) {
+    } else if (response !== undefined && response.rates) {
       setData({
         labels: Object.keys(response.rates),
         datasets: [
@@ -58,6 +61,9 @@ const LineChart = () => {
   const options = {
     scales: {
       y: {
+        grid: {
+          color: "#367a94",
+        },
         beginAtZero: true,
       },
     },
