@@ -44,7 +44,6 @@ const DashboardPage = ({ mode }) => {
     } else {
       setLineChartVisible(true);
     }
-    updateBoxCount();
   };
 
   const toggleBarChart = () => {
@@ -53,8 +52,6 @@ const DashboardPage = ({ mode }) => {
     } else {
       setBarChartVisible(true);
     }
-
-    updateBoxCount();
   };
 
   return (

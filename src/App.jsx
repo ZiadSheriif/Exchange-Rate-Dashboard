@@ -30,8 +30,7 @@ function App() {
   const toggleMode = () => {
     if (mode === "view") {
       setMode("edit");
-    }
-    if (mode === "edit") {
+    } else if (mode === "edit") {
       setMode("view");
     }
   };
