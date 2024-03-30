@@ -24,6 +24,12 @@ import { mockBarChartData } from "src/Data/mockBarChartData";
 import useFetchFunction from "src/Hooks/useFetchFunction";
 import getLastestExchangeRates from "src/Services/getLatestExchange";
 
+// import components
+import ProgressBar from "src/Components/ProgressBar/ProgressBar";
+
+// styled components
+import { ProgressWrapper } from "./BarChart.styled";
+
 const BarChart = () => {
   // Fetching exchange rates for EGP, EUR, and GBP
   const [EGP, errorEGP, isLoadingEGP, fetchDataEGP] = useFetchFunction();
@@ -102,7 +108,9 @@ const BarChart = () => {
     isLoadingEUR ||
     isLoadingGBP ||
     data?.datasets?.[0]?.data?.length === 0 ? (
-    "...Loading"
+    <ProgressWrapper>
+      <ProgressBar />
+    </ProgressWrapper>
   ) : (
     <Bar data={data} options={options} />
   );

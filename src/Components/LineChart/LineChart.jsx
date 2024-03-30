@@ -23,6 +23,11 @@ import geLast30DaysUSDEUR from "src/Services/getExchangeRates";
 
 // mock data
 import { mockLineChartData } from "src/Data/mockLineChartData";
+// import components
+import ProgressBar from "src/Components/ProgressBar/ProgressBar";
+
+// styled components
+import { ProgressWrapper } from "./LineChart.styled";
 
 const LineChart = () => {
   // Fetching the exchange rates
@@ -71,7 +76,9 @@ const LineChart = () => {
 
   // Rendering the chart or a loading message
   return isLoading && data !== undefined ? (
-    "...Loading"
+    <ProgressWrapper>
+      <ProgressBar />
+    </ProgressWrapper>
   ) : (
     <Line data={data} options={options} />
   );

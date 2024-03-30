@@ -12,7 +12,7 @@
  *   <App />
  * )
  */
-import { useState } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import Header from "src/Components/Header/Header";
@@ -25,7 +25,7 @@ import DashboardPage from "src/Pages/DashboardPage/DashboardPage";
 import useLocalStorage from "src/Hooks/useLocalStorage";
 
 function App() {
-  const [mode, setMode] = useLocalStorage("mode", "view");
+  const [mode, setMode] = useLocalStorage("mode", "edit");
 
   const toggleMode = () => {
     if (mode === "view") {
