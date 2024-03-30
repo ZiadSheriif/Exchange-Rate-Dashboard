@@ -1,6 +1,18 @@
+## Note on API Key Expiration
+
+- **In the event that the API key expires**, the application will continue to function as expected. This is because we have implemented a fallback mechanism that uses **mock data** to simulate the presence of actual data. This ensures that the application remains usable even if the API key is no longer valid. Please note that while the application will function, the data displayed will be static and not reflect any changes from the actual data source until a valid API key is provided.
+- if you want to add another key , replace it with the one in the .env file
+---
+## Note on `.env` File
+
+- Normally, `.env` files should not be published to public repositories for security reasons as they often contain sensitive information like API keys and database credentials. However, in this case, to demonstrate the application, the `.env` file has been included in the repository with all keys and URLs.
+---
 # Project Title
 
 This is a brief description of what this project is about and what it does.
+
+
+
 
 ## Getting Started
 
