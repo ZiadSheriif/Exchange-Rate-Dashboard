@@ -62,7 +62,7 @@ const LineChart = () => {
     scales: {
       y: {
         grid: {
-          color: "#367a94",
+          color: "gray",
         },
         beginAtZero: true,
       },

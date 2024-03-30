@@ -21,11 +21,19 @@ import Header from "src/Components/Header/Header";
 import HomePage from "src/Pages/HomePage/HomePage";
 import DashboardPage from "src/Pages/DashboardPage/DashboardPage";
 
+// hooks
+import useLocalStorage from "src/Hooks/useLocalStorage";
+
 function App() {
-  const [mode, setMode] = useState("view");
+  const [mode, setMode] = useLocalStorage("mode", "view");
 
   const toggleMode = () => {
-    setMode((prevMode) => (prevMode === "view" ? "edit" : "view"));
+    if (mode === "view") {
+      setMode("edit");
+    }
+    if (mode === "edit") {
+      setMode("view");
+    }
   };
   return (
     <>

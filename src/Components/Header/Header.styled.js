@@ -10,6 +10,9 @@ const HeaderContainer = styled.div`
   text-align: center;
   h3 {
     margin: 0;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
 `;
 const ToggleButton = styled.button`
@@ -23,6 +26,11 @@ const ToggleButton = styled.button`
   transition: background-color 0.3s;
   &:hover {
     background-color: #367a94;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 8px;
+    width: 50%;
   }
 `;
 
