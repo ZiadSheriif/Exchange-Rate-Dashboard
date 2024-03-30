@@ -18,39 +18,55 @@ import LineChart from "src/Components/LineChart/LineChart";
 import BarChart from "src/Components/BarChart/BarChart";
 
 // styles
-import { ChartContainer } from "./DashboardPage.styled";
+import { ChartContainer,Container,Button,ButtonContainer } from "./DashboardPage.styled";
+
+// local storage hook
+import useLocalStorage from "src/Hooks/useLocalStorage";
 
 const DashboardPage = ({ mode }) => {
-  const [lineChartVisible, setLineChartVisible] = useState(true);
-  const [barChartVisible, setBarChartVisible] = useState(true);
+  const [lineChartVisible, setLineChartVisible] = useLocalStorage(
+    "lineChartVisible",
+    true
+  );
+  const [barChartVisible, setBarChartVisible] = useLocalStorage(
+    "barChartVisible",
+    true
+  );
 
-  const hideBox = (boxType) => {
-    if (boxType === "line") setLineChartVisible(false);
-    if (boxType === "bar") setBarChartVisible(false);
+  const [boxCount, setBoxCount] = useState(2);
+  const [showAddBoxButton, setShowAddBoxButton] = useState(false);
+
+  const toggleLineChart = () => {
+    setLineChartVisible((prev) => !prev);
+    updateBoxCount();
   };
 
-  const addBox = (boxType) => {
-    if (boxType === "line") setLineChartVisible(true);
-    if (boxType === "bar") setBarChartVisible(true);
+  const toggleBarChart = () => {
+    setBarChartVisible((prev) => !prev);
+    updateBoxCount();
+  };
+
+  const updateBoxCount = () => {
+    const count = (lineChartVisible ? 1 : 0) + (barChartVisible ? 1 : 0);
+    setBoxCount(count);
+    setShowAddBoxButton(count < 2);
   };
 
   return (
-    <div>
+    <Container mode={mode}>
       {mode === "edit" && (
-        <div>
-          {lineChartVisible && (
-            <button onClick={() => hideBox("line")}>Hide Line Chart</button>
+        <ButtonContainer>
+          {lineChartVisible ? (
+            <Button onClick={toggleLineChart}>Hide Line Chart</Button>
+          ) : (
+            <Button onClick={toggleLineChart}>Show Line Chart</Button>
           )}
-          {!lineChartVisible && (
-            <button onClick={() => addBox("line")}>Add Line Chart</button>
+          {barChartVisible ? (
+            <Button onClick={toggleBarChart}>Hide Bar Chart</Button>
+          ) : (
+            <Button onClick={toggleBarChart}>Show Bar Chart</Button>
           )}
-          {barChartVisible && (
-            <button onClick={() => hideBox("bar")}>Hide Bar Chart</button>
-          )}
-          {!barChartVisible && (
-            <button onClick={() => addBox("bar")}>Add Bar Chart</button>
-          )}
-        </div>
+        </ButtonContainer>
       )}
       {mode === "view" && (
         <div>
@@ -66,7 +82,7 @@ const DashboardPage = ({ mode }) => {
           )}
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 
