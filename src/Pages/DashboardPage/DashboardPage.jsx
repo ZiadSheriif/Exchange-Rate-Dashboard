@@ -39,12 +39,21 @@ const DashboardPage = ({ mode }) => {
   );
 
   const toggleLineChart = () => {
-    setLineChartVisible((prev) => !prev);
+    if (JSON.parse(lineChartVisible) === true) {
+      setLineChartVisible(false);
+    } else {
+      setLineChartVisible(true);
+    }
     updateBoxCount();
   };
 
   const toggleBarChart = () => {
-    setBarChartVisible((prev) => !prev);
+    if (JSON.parse(barChartVisible) === true) {
+      setBarChartVisible(false);
+    } else {
+      setBarChartVisible(true);
+    }
+
     updateBoxCount();
   };
 
