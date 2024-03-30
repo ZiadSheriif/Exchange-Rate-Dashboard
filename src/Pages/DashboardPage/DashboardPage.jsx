@@ -18,7 +18,12 @@ import LineChart from "src/Components/LineChart/LineChart";
 import BarChart from "src/Components/BarChart/BarChart";
 
 // styles
-import { ChartContainer,Container,Button,ButtonContainer } from "./DashboardPage.styled";
+import {
+  ChartContainer,
+  Container,
+  Button,
+  ButtonContainer,
+} from "./DashboardPage.styled";
 
 // local storage hook
 import useLocalStorage from "src/Hooks/useLocalStorage";
@@ -33,9 +38,6 @@ const DashboardPage = ({ mode }) => {
     true
   );
 
-  const [boxCount, setBoxCount] = useState(2);
-  const [showAddBoxButton, setShowAddBoxButton] = useState(false);
-
   const toggleLineChart = () => {
     setLineChartVisible((prev) => !prev);
     updateBoxCount();
@@ -46,25 +48,22 @@ const DashboardPage = ({ mode }) => {
     updateBoxCount();
   };
 
-  const updateBoxCount = () => {
-    const count = (lineChartVisible ? 1 : 0) + (barChartVisible ? 1 : 0);
-    setBoxCount(count);
-    setShowAddBoxButton(count < 2);
-  };
-
   return (
     <Container mode={mode}>
       {mode === "edit" && (
         <ButtonContainer>
-          {lineChartVisible ? (
-            <Button onClick={toggleLineChart}>Hide Line Chart</Button>
-          ) : (
+          {!lineChartVisible && (
             <Button onClick={toggleLineChart}>Show Line Chart</Button>
           )}
-          {barChartVisible ? (
-            <Button onClick={toggleBarChart}>Hide Bar Chart</Button>
-          ) : (
+          {!barChartVisible && (
             <Button onClick={toggleBarChart}>Show Bar Chart</Button>
+          )}
+
+          {lineChartVisible && (
+            <Button onClick={toggleLineChart}>Hide Line Chart</Button>
+          )}
+          {barChartVisible && (
+            <Button onClick={toggleBarChart}>Hide Bar Chart</Button>
           )}
         </ButtonContainer>
       )}
