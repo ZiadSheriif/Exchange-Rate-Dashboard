@@ -77,7 +77,7 @@ const LineChart = () => {
   // Rendering the chart or a loading message
   return isLoading && data !== undefined ? (
     <ProgressWrapper>
-      <ProgressBar />
+      <ProgressBar testId="progress-wrapper" />
     </ProgressWrapper>
   ) : (
     <Line data={data} options={options} />

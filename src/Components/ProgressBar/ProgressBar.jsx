@@ -1,10 +1,10 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const ProgressBar = () => {
+const ProgressBar = ({ testId }) => {
   return (
     <Box sx={{ display: "flex" }}>
-      <CircularProgress />
+      <CircularProgress data-testid={testId} />
     </Box>
   );
 };

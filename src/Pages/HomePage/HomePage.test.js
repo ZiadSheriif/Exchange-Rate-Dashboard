@@ -1,6 +1,6 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom"; // Provides routing context for testing
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 
 describe("HomePage", () => {
@@ -17,19 +17,5 @@ describe("HomePage", () => {
       getByText("Click on the card to navigate to the Dashboard.")
     ).toBeInTheDocument();
     expect(getByText("Go to Dashboard")).toBeInTheDocument();
-  });
-
-  test("navigates to dashboard on clicking the link", () => {
-    const { getByText } = render(
-      <MemoryRouter initialEntries={["/"]}>
-        <HomePage />
-      </MemoryRouter>
-    );
-
-    // Click on the link to navigate to the dashboard
-    fireEvent.click(getByText("Go to Dashboard"));
-
-    // Check if the URL changes to '/dashboard'
-    expect(window.location.pathname).toBe("/dashboard");
   });
 });

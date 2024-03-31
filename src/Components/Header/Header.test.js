@@ -1,6 +1,5 @@
-import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Header from "./Header.jsx";
+import Header from "./Header";
 
 describe("Header", () => {
   it("renders the title", () => {
