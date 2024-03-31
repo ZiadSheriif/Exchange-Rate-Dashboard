@@ -15,8 +15,9 @@
  * getLatestExchangeRate(fetchData, "EUR,GBP");
  */
 import axios from "src/API/axios";
-require('dotenv').config();
-var APIKEY = process.env.VITE_API_KEY;
+// require('dotenv').config();
+// var APIKEY = process.env.VITE_API_KEY;
+var APIKEY = import.meta.env.VITE_API_KEY;
 
 const getLatestExchangeRate = (dataFetch, symbols, base = "USD") => {
   dataFetch({

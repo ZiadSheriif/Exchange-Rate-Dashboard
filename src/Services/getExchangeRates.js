@@ -14,8 +14,10 @@
  * geLast30DaysUSDEUR(fetchData);
  */
 import axios from "src/API/axios";
-require('dotenv').config();
-var APIKEY = process.env.VITE_API_KEY;
+// require('dotenv').config();
+// var APIKEY = process.env.VITE_API_KEY;
+var APIKEY = import.meta.env.VITE_API_KEY;
+
 import formatDate from "src/Utils/conversionDate";
 
 const geLast30DaysUSDEUR = (dataFetch, objectData = {}) => {
