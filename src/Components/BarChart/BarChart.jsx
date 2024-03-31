@@ -49,14 +49,7 @@ const BarChart = () => {
   // Updating the chart data when the exchange rates change
   useEffect(() => {
     if (errorEGP || errorEUR || errorGBP) {
-    } else if (
-      EGP !== undefined &&
-      EGP?.rates &&
-      EUR !== undefined &&
-      EUR?.rates &&
-      GBP !== undefined &&
-      GBP?.rates
-    ) {
+    } else if (EGP && EGP?.rates && EUR && EUR?.rates && GBP && GBP?.rates) {
       setData({
         labels: ["EGP", "EUR", "GBP"],
         datasets: [
@@ -109,7 +102,7 @@ const BarChart = () => {
     isLoadingGBP ||
     data?.datasets?.[0]?.data?.length === 0 ? (
     <ProgressWrapper>
-      <ProgressBar />
+      <ProgressBar testId="progress-wrapper" />
     </ProgressWrapper>
   ) : (
     <Bar data={data} options={options} />

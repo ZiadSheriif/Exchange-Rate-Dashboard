@@ -10,12 +10,12 @@
  * @module
  */
 import { default as axios } from "axios";
-
+require("dotenv").config();
 // Base URL for the API
-const BASE_URL =
-  import.meta.env.VITE_REACT_APP_MODE === "production"
-    ? import.meta.env.VITE_REACT_APP_API_URL
-    : import.meta.env.VITE_REACT_APP_MOCK_URL;
+var BASE_URL = (exports.BASE_URL =
+  process.env.VITE_REACT_APP_MODE === "production"
+    ? process.env.VITE_REACT_APP_API_URL
+    : process.env.VITE_REACT_APP_MOCK_URL);
 
 export default axios.create({
   baseURL: BASE_URL,

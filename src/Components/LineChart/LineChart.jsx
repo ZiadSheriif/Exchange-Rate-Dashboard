@@ -45,7 +45,7 @@ const LineChart = () => {
   useEffect(() => {
     if (error) {
       console.log(error);
-    } else if (response !== undefined && response.rates) {
+    } else if (response && response.rates)  {
       setData({
         labels: Object.keys(response.rates),
         datasets: [

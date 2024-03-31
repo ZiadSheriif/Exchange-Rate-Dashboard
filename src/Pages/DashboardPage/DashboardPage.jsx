@@ -13,7 +13,7 @@
  *   <DashboardPage mode="edit" />
  * )
  */
-import React, { useState } from "react";
+import React from "react";
 import LineChart from "src/Components/LineChart/LineChart";
 import BarChart from "src/Components/BarChart/BarChart";
 
