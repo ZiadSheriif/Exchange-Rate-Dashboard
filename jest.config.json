@@ -3,6 +3,7 @@
   "testEnvironment": "jest-environment-jsdom",
   "moduleNameMapper": {
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/test/fileMock.js",
+    "^import.meta.env$": "<rootDir>/env/importMetaEnv.js",
     "\\.(css|less)$": "identity-obj-proxy",
     "^src/(.*)$": "<rootDir>/src/$1"
   },

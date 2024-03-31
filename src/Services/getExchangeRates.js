@@ -14,9 +14,7 @@
  * geLast30DaysUSDEUR(fetchData);
  */
 import axios from "src/API/axios";
-// require('dotenv').config();
-// var APIKEY = process.env.VITE_API_KEY;
-var APIKEY = import.meta.env.VITE_API_KEY;
+import { envVariables } from "src/env/importMetaEnv";
 
 import formatDate from "src/Utils/conversionDate";
 
@@ -32,7 +30,7 @@ const geLast30DaysUSDEUR = (dataFetch, objectData = {}) => {
   dataFetch({
     axiosInstance: axios,
     method: "GET",
-    url: `timeseries?apikey=${APIKEY}&start_date=${startDate}&end_date=${endDate}&symbols=EUR&base=USD`,
+    url: `timeseries?apikey=${envVariables.VITE_API_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=EUR&base=USD`,
     requestConfig: {
       headers: {
         "Content-Language": "en",
